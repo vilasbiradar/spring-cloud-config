@@ -24,3 +24,9 @@ eureka:
     hostname: localhost
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${server.port}
+
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
