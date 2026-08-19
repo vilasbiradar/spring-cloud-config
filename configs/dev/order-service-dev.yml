@@ -16,7 +16,7 @@ spring:
       hibernate:
         format_sql: true
 
-  kafka:
+ kafka:
     bootstrap-servers: localhost:9092
 
     producer:
@@ -25,7 +25,6 @@ spring:
 
       properties:
         spring.json.type.mapping: orderEvent:com.flipkart.order.event.OrderCreatedEvent
-
 eureka:
   client:
     service-url:
