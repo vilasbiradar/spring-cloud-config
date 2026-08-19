@@ -8,13 +8,23 @@ spring:
     consumer:
       group-id: notification-group
       auto-offset-reset: earliest
+      enable-auto-commit: false
 
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
 
       properties:
-        spring.json.trusted.packages: com.flipkart.order.event,com.flipkart.notification.event
-        spring.json.type.mapping: orderEvent:com.flipkart.notification.event.OrderCreatedEvent
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+
+        spring.json.value.default.type: com.flipkart.notification.event.OrderCreatedEvent
+
+        spring.json.use.type.headers: false
+
+        spring.json.trusted.packages: com.flipkart.notification.event
+
+    listener:
+      ack-mode: record
 
 eureka:
   client:
