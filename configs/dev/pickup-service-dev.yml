@@ -13,7 +13,7 @@ spring:
 
       properties:
         spring.json.trusted.packages: "com.flipkart.pickup.event"
-        spring.json.value.default.type: "com.flipkart.pickup.event.OrderCreatedEvent"
+        spring.json.type.mapping: "orderEvent:com.flipkart.pickup.event.OrderCreatedEvent"
 
 eureka:
   client:
